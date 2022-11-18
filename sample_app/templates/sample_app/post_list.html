@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous" />
+    <title>Post lists</title>
+</head>
+<body>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <h1>Neko CHAN</h1>
+        <th>#</th>
+        <th>名前</th>
+        <th>年齢</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in posts %}
+      <tr>
+        <th>{{ post.id }}</th>
+        <td>{{ post.name }}</td>
+        <td>{{ post.micropost }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  <h4>登録フォーム</h4>
+  <form action="{% url 'sample_app:create_post' %}" method="post">
+    <input type="text" name="id" placeholder="ID" />
+    <input type="text" name="name" placeholder="名前" />
+		<input type="text" name="micropost" placeholder="年齢" />
+  {% csrf_token %}
+    {{ form }}
+        <button type="submit">登録</button>
+  </form>
+</body>
+</html>
