@@ -23,7 +23,8 @@ def create_post(request):
         #               {'form': form})  # Template に渡すデータ
 
     # 実行ボタン押下時
-    if request.method == 'POST':
+    
+    else:
         # POST されたデータにより form を作成
         form = PostForm(request.POST, instance=post)
 
@@ -61,7 +62,7 @@ def calc_view(request):
         
     return render(request,
                     'sample_app/calc_view.html',
-                    {'form': form, 'sum': sum, 'sub': sub, 'mul': mul, 'div': div})
+                    context={'form': form, 'sum': sum, 'sub': sub, 'mul': mul, 'div': div})
 
 # def edit_post(request, post_id):
 #     """
